@@ -1,0 +1,42 @@
+@import '../../../styles';
+
+.card {
+    margin: 30px 0px;
+    background-color: white;
+    filter: drop-shadow(0px 2px 3px lightgray);
+    display: flex;
+
+    transition: all 250ms ease-in;
+
+    .body {
+       flex: 1;
+       padding: 8px;
+    }
+
+    .number {
+        font-weight: 200;
+        font-size: 16px;
+        border-bottom: 1px solid mat-color($mat-dark, 200);
+    }
+
+    .header {
+        display: flex;
+    }
+
+    .status {
+        flex-basis: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-4px);
+        filter: drop-shadow(0px 4px 3px lightgray);
+    }
+
+    .title {
+        padding-left: 1em;
+    }
+}

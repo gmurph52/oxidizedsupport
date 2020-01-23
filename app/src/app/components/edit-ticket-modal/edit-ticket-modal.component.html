@@ -1,0 +1,88 @@
+<div class="title-row">
+  <h2 mat-dialog-title>Edit Ticket</h2>
+  <div class="spacer"></div>
+  <h4 mat-dialog-title class="number">{{(ticketState.SelectedTicket.subject | async)?.Number}}</h4>
+</div>
+<mat-dialog-content class="wrapper">
+  <div class="content">
+    <div class="title">
+      <form [formGroup]="titleForm" *ngIf="!!isEditing['Title']">
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="Title" required>
+          <mat-error *ngIf="getControlErrors(titleForm, 'Title')?.required">Required</mat-error>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="isEditing['Title'] = false; cancel(titleForm)">Cancel</button>
+        <button mat-raised-button color="primary" (click)="isEditing['Title'] = false; save(titleForm)">Save</button>
+      </form>
+      <div class="display-title" *ngIf="!isEditing['Title']">
+        <div class="header">
+          <label class="header-underline">Title</label>
+          <button mat-icon-button color="primary" (click)="isEditing['Title'] = !isEditing['Title']" [disabled]="!!isEditing['Description'] || !!isEditing['Status']">Edit</button>
+        </div>
+        <p>{{(ticketState.SelectedTicket.subject | async)?.Title}}</p>
+      </div>
+    </div>
+    <div class="description">
+      <form [formGroup]="descriptionForm">
+        <div class="edit-description" *ngIf="!!isEditing['Description']">
+          <quill-editor [modules]="defaultModules" theme="snow" formControlName="Description"></quill-editor>
+          <button class="button-spacing" mat-button color="primary" (click)="isEditing['Description'] = false; cancel(descriptionForm)">Cancel</button>
+          <button class="button-spacing" mat-raised-button color="primary" (click)="isEditing['Description'] = false; save(descriptionForm)">Save</button>
+        </div>
+        <div class="display-description" *ngIf="!isEditing['Description']">
+          <div class="header">
+            <label class="header-underline">Description</label>
+            <button mat-icon-button color="primary" (click)="isEditing['Description'] = !isEditing['Description']" [disabled]="!!isEditing['Title'] || !!isEditing['Status']">Edit</button>
+          </div>
+          <quill-editor [modules]="defaultModules" theme="bubble" readOnly="true" formControlName="Description"></quill-editor>
+
+          <!-- <p>{{(ticketState.SelectedTicket.subject | async)?.Title}}</p> -->
+        </div>
+      </form>
+    </div>
+    <!-- <h5 class="header-underline">Description</h5>
+    <div class="quill-editor">
+      <quill-editor [modules]="defaultModules" theme="bubble" readOnly="true"></quill-editor>
+    </div> -->
+    <app-ticket-comments></app-ticket-comments>
+  </div>
+  <div class="sidenav">
+    <div class="status">
+      <form [formGroup]="statusForm" *ngIf="!!isEditing['Status'] && isSupport">
+        <!-- <mat-form-field>
+              <input matInput placeholder="Status" formControlName="Status" required>
+              <mat-error *ngIf="getControlErrors(statusForm, 'Status')?.required">Required</mat-error>
+            </mat-form-field> -->
+        <mat-form-field>
+          <mat-select placeholder="Status" formControlName="StatusCode" disableOptionCentering="false" required>
+            <mat-option *ngFor="let status of statuses" [value]="status.Code">
+              {{status.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="getControlErrors(statusForm, 'StatusCode')?.required">Required</mat-error>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="isEditing['Status'] = false; cancel(statusForm)">Cancel</button>
+        <button mat-raised-button color="primary" (click)="isEditing['Status'] = false; save(statusForm)">Save</button>
+      </form>
+      <div class="display-status" *ngIf="!isEditing['Status']">
+        <div class="header">
+          <label class="header-underline">Status</label>
+          <button mat-icon-button *ngIf="isSupport" color="primary" (click)="isEditing['Status'] = !isEditing['Status']" [disabled]="!!isEditing['Description'] || !!isEditing['Title']">Edit</button>
+        </div>
+        <p>{{(ticketState.SelectedTicket.subject | async)?.Status.Name}}</p>
+      </div>
+    </div>
+    <!-- <div>
+      <label class="header-underline">Status</label>
+    </div>
+    <p>{{(ticketState.SelectedTicket.subject | async)?.Status.Name}}</p> -->
+    <div>
+      <label class="header-underline">System</label>
+    </div>
+    <p>{{(ticketState.SelectedTicket.subject | async)?.System.Name}}</p>
+  </div>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+  <button mat-button mat-dialog-close color="primary">Close</button>
+  <button mat-raised-button color="primary" [disabled]="ticketForm.invalid" [mat-dialog-close]="true" (click)="save()">Save</button>
+</mat-dialog-actions> -->

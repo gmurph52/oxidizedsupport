@@ -1,0 +1,11 @@
+<div class="card" (click)="editTicket()">
+  <div class="body">
+    <div class="header">
+      <div class="number">{{ticket.Number}}</div>
+    </div>
+    <div class="content">
+      <div class="title">{{ticket.Title}}</div>
+    </div>
+  </div>
+  <div class="status" [style.background]="'#' + ticket.Status.Color" [matTooltip]="ticket.Status.Name" matTooltipPosition="right"><mat-icon>{{ticket.Status.Icon}}</mat-icon></div>
+</div> 

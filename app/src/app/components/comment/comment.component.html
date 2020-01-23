@@ -1,0 +1,9 @@
+<div class="side-image"><div class="inner"><label>{{comment.AuthorInitials}}</label></div></div>
+<div class="card">
+  <div class="header">
+    <label>{{comment.AuthorName}}</label>
+    <h6>{{formatDate(comment.CreatedDate)}}</h6>
+  </div>
+  <quill-editor theme="bubble" readOnly="true" placeholder="" class="long-desc" [(ngModel)]="comment.BodyText"></quill-editor>
+</div>
+<div class="spacer"></div>

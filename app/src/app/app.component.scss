@@ -1,0 +1,15 @@
+.main {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 50px 1fr;
+
+    grid-template-areas: 'top-header' 'outlet';
+
+    app-header {
+        grid-area: top-header;
+    }
+
+    .outlet {
+        grid-area: outlet;
+    }
+}

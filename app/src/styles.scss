@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+$roboto-font-path: '~../src/assets/fonts';
+
+@import '~roboto-fontface/css/roboto/sass/roboto-fontface-regular.scss';
+@import '~roboto-fontface/css/roboto/sass/roboto-fontface-light.scss';
+
+@import './theme.scss';
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(~material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+  }
+
+body, html {
+    margin: 0;
+    height: 100%;
+    background-color: map-get($mat-background, 500);
+}
+
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+
+.modal-responsive {
+    transition: width 250ms ease-in;
+    width: 75vw;
+    // mat-dialog-container {
+    //     padding-bottom: 0;
+    // }
+}
+
+.header-underline {
+    border-bottom: 1px solid mat-color($mat-dark, 200);
+}
+
+@media (max-width: 600px) {
+    .modal-responsive {
+        width: 100vw;
+        margin: 0px 5px;
+        max-width: 100vw !important;
+    }
+}

@@ -1,0 +1,20 @@
+@import '../../../theme.scss';
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color:  map-get($mat-primary, 500);
+
+    filter: drop-shadow(0px 1px 3px lightgray);
+
+    align-items: center;
+
+    .title {
+        padding-top: 0;
+        margin: 0;
+        font-weight: 300;
+        padding-left: 1em;
+        color: white;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="content">
+    <div class="filters"></div>
+    <div class="card-list">
+      <div class="actions">
+        <button mat-button color="primary" (click)="openCreateTicketModal()">
+          <mat-icon>add</mat-icon>Create Ticket
+        </button>
+        <mat-form-field>
+          <mat-select placeholder="Status" [(value)]="selectedStatus" (selectionChange)="filterTickets($event)" disableOptionCentering="false">
+            <mat-option *ngFor="let s of status" [value]="s.Code">
+              {{s.Name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+         <mat-select placeholder="System" [(value)]="selectedSystem" (selectionChange)="filterTickets($event)" disableOptionCentering="false">
+            <mat-option *ngFor="let system of systems" [value]="system.Code">
+              {{system.Name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <h1>{{isSupport ? 'All' : 'My'}} Tickets</h1>
+      <app-ticket-card *ngFor="let ticket of ticketState.List.subject | async" [ticket]="ticket"></app-ticket-card>
+    </div>
+  </div>
+</div>

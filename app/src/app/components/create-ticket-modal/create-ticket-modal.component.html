@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Create Ticket</h2>
+<mat-dialog-content>
+  <form [formGroup]="ticketForm">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="Title" required>
+      <mat-error *ngIf="getControlErrors('Title')?.required">Required</mat-error>
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput placeholder="Description" formControlName="Description">
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-select placeholder="System" formControlName="SystemCode" disableOptionCentering="false" required>
+        <mat-option *ngFor="let system of systems" [value]="system.Code">
+          {{system.Name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="getControlErrors('SystemCode')?.required">Required</mat-error>
+    </mat-form-field>
+    <quill-editor [modules]="defaultModules" placeholder="Description" formControlName="Description"></quill-editor>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close color="primary">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="ticketForm.invalid" [mat-dialog-close]="true" (click)="save()">Save</button>
+</mat-dialog-actions>

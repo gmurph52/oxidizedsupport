@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="history">
+    <div class="add-comment">
+      <form [formGroup]="commentForm">
+        <div class="spacer"></div>
+        <div class="bottom-space">
+          <label class="header-underline">Add Comment</label>
+        </div>
+        <quill-editor [modules]="defaultModules" formControlName="BodyText"></quill-editor>
+        <div class="spacer-small"></div>
+        <button mat-raised-button color="primary" [disabled]="commentForm.invalid" (click)="save()">Comment</button>
+      </form>
+    </div>
+    <app-comment *ngFor="let comment of commentState.List.subject | async | orderBy: ['-CreatedDate', '-Id']" [class.my-comment]="comment.UserId === (userService.currentUser.subject | async)?.Id" [comment]="comment"></app-comment>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+@import '../../../styles';
+
+.my-comment {
+    flex-direction: row-reverse;
+}
+
+.spacer {
+    padding-top: 30px;
+}
+
+.spacer-small {
+    padding-top: 8px;
+}
+
+.header-underline {
+    margin-top: 0;
+    
+}
+
+quill-editor {
+    
+    margin-top: 3px;
+}
+
+.main {
+    margin-bottom: 8px;
+}
+
+.bottom-space {
+    margin-bottom: 3px;
+}

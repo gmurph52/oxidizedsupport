@@ -1,0 +1,70 @@
+@import '../../../styles';
+
+.mat-form-field{
+    width: 100%;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.title-row {
+    display: flex;
+
+    .spacer {
+        flex: 1;
+    }
+
+    .number {
+        text-align: right;
+        font-weight: 300;
+    }
+}
+
+.wrapper {
+    display: flex;
+
+    .content {
+        flex: 1;
+
+    }
+    .sidenav {
+        flex-basis: 180px;
+        margin: 0px 5px;
+        padding: 0px 5px;
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+
+p {
+    margin-top: 0;
+}
+h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.quill-editor {
+    margin-top: 8px;
+}
+
+.button-spacing {
+    margin-top: 5px;
+}
+
+.display-title {
+    p {
+        padding-left: 1em;
+        line-height: 1.42;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .wrapper {
+        flex-direction: column;
+    }
+}
