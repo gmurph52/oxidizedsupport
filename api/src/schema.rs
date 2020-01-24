@@ -2,14 +2,14 @@ table! {
     audits (id) {
         id -> Int4,
         #[sql_name = "type"]
-        type_ -> Nullable<Varchar>,
-        table_name -> Nullable<Varchar>,
-        field_name -> Nullable<Varchar>,
-        p_k -> Nullable<Varchar>,
-        old_value -> Nullable<Varchar>,
-        new_value -> Nullable<Varchar>,
+        type_ -> Varchar,
+        table_name -> Varchar,
+        field_name -> Varchar,
+        p_k -> Varchar,
+        old_value -> Varchar,
+        new_value -> Varchar,
         update_date -> Date,
-        user_name -> Nullable<Varchar>,
+        user_name -> Varchar,
     }
 }
 
@@ -18,7 +18,7 @@ table! {
         id -> Int4,
         user_id -> Nullable<Int4>,
         tocket_id -> Nullable<Int4>,
-        body_text -> Nullable<Varchar>,
+        body_text -> Varchar,
         created_date -> Date,
     }
 }
@@ -26,7 +26,7 @@ table! {
 table! {
     roles (code) {
         code -> Varchar,
-        name -> Nullable<Varchar>,
+        name -> Varchar,
         enabled -> Nullable<Bool>,
     }
 }
@@ -34,17 +34,17 @@ table! {
 table! {
     statuses (code) {
         code -> Varchar,
-        name -> Nullable<Varchar>,
+        name -> Varchar,
         enabled -> Nullable<Bool>,
-        color -> Nullable<Varchar>,
-        icon -> Nullable<Varchar>,
+        color -> Varchar,
+        icon -> Varchar,
     }
 }
 
 table! {
     systems (code) {
         code -> Varchar,
-        name -> Nullable<Varchar>,
+        name -> Varchar,
         enabled -> Nullable<Bool>,
     }
 }
@@ -62,8 +62,8 @@ table! {
         id -> Int4,
         status_code -> Varchar,
         system_code -> Varchar,
-        title -> Nullable<Varchar>,
-        description -> Nullable<Varchar>,
+        title -> Varchar,
+        description -> Varchar,
     }
 }
 
@@ -74,19 +74,19 @@ table! {
         role_code -> Varchar,
         start_date -> Date,
         end_date -> Nullable<Date>,
-        notes -> Nullable<Varchar>,
+        notes -> Varchar,
     }
 }
 
 table! {
     users (id) {
         id -> Int4,
-        domain_user_name -> Nullable<Varchar>,
+        domain_user_name -> Varchar,
         is_active -> Nullable<Bool>,
         deleted -> Nullable<Bool>,
         first_name -> Varchar,
-        last_name -> Nullable<Varchar>,
-        email_address -> Nullable<Varchar>,
+        last_name -> Varchar,
+        email_address -> Varchar,
     }
 }
 
