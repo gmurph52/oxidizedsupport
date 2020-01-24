@@ -8,5 +8,5 @@ fn index(name :String) -> String {
 }
 
 fn main() {
-    println!("Hello, world!");
+	rocket::ignite().mount("/", routes![index]).launch();
 }
