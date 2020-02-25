@@ -42,7 +42,7 @@ fn createTicket(mut ticket: Form<NewTicket>) -> Json<Ticket> {
 
 
 fn main() {
-	//let connection = establish_connection();
+	let connection = establish_connection();
 
     // println!("What would you like your title to be?");
     // let mut title = String::new();
@@ -57,16 +57,13 @@ fn main() {
 	// let mut system_code = String::new();
     // stdin().read_to_string(&mut system_code).unwrap();
 
-	let title : String = "My title".to_string();
-    let description : String = "My description".to_string();
+	let title : String = "My title 4".to_string();
+    let description : String = "My description 4".to_string();
 	let status_code : String = "APPRNEEDED".to_string();
 	let system_code : String = "CMP".to_string();
 
-
-    //let ticket = create_ticket(&connection, title, &body);
-	//println!("\nSaved draft {} with id {}", title, post.id);
-	// let ticket = create_ticket(&connection, title, description, status_code, system_code);
-	// println!("\nSaved draft! {}", ticket.id);
+	let ticket = create_ticket(&connection, title, description, status_code, system_code);
+	println!("\nSaved draft! {}", ticket.id);
 
 
 	rocket::ignite().mount("/", routes![index,createTicket]).launch();
